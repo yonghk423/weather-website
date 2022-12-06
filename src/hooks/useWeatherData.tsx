@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import getApi from "../Api/getApi";
 import { IweatherData } from "../App";
 

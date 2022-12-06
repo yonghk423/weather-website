@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import useWeatherData from "./hooks/useWeatherData";
+import useWeatherData from "./Hooks/useWeatherData";
 import Main from "./page/Main";
 
 export interface IweatherData {

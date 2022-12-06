@@ -5,6 +5,7 @@ type Props = {
 };
 
 const WeatherInfo: React.FC<Props> = ({ weatherData }) => {
+  // 구조 분해 할당
   console.log(weatherData);
   return (
     <ul>

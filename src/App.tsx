@@ -13,33 +13,38 @@ export interface IweatherData {
 }
 
 function App() {
-  const [input, setInput] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState("");
   const [loading, error, weatherData] = useWeatherData({ searchData });
-  console.log(input);
+  console.log(inputValue);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(e);
-    setSearchData(input);
+    setSearchData(inputValue);
   };
   return (
     <Layout>
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <input
           type='search'
           name='search'
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           required
         ></input>
         <button type='submit' placeholder='search city'>
           search
         </button>
-      </form>
-      <Main weatherData={weatherData} onSubmit={onSubmit} />
+      </form> */}
+      <Main
+        weatherData={weatherData}
+        onSubmit={onSubmit}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
     </Layout>
   );
 }

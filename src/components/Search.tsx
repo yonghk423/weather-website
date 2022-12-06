@@ -4,20 +4,21 @@ import WeatherApi from "../api/weatherApi";
 
 type Props = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  inputValue: string;
 };
-const Search: React.FC<Props> = () => {
-  const [input, setInput] = useState("");
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
+const Search: React.FC<Props> = ({ onSubmit, inputValue, setInputValue }) => {
+  // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  // };
   return (
     <div>
       <form onSubmit={onSubmit}>
         <input
           type='search'
           name='search'
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           required
         ></input>
         <button type='submit' placeholder='search city'>

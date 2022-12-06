@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const WeatherApi = async (city: string) => {
+const weatherApi = async (city: string) => {
   console.log(city);
   try {
     const response = await axios
@@ -21,4 +21,4 @@ const WeatherApi = async (city: string) => {
   }
 };
 
-export default WeatherApi;
+export default weatherApi;

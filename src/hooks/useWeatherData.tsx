@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react";
-import WeatherApi from "../api/WeatherApi";
+import weatherApi from "../api/weatherApi";
 import { IweatherData } from "../App";
 
 type ReturnTypes = [boolean, undefined, IweatherData | undefined];
 
-const useWeatherData = (): ReturnTypes => {
+const useWeatherData = ({ searchData }: any): ReturnTypes => {
   const [weatherData, setWeatherData] = useState<IweatherData>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
-  console.log(weatherData);
+  console.log(searchData);
 
   useEffect(() => {
     setLoading(false);
     setError(undefined);
     const WeatherApiData = async () => {
-      const data = await WeatherApi("seoul");
+      const data = await weatherApi(`${searchData !== "" ? searchData : "seoul"}`);
       setWeatherData(data);
     };
     WeatherApiData();
-  }, []);
+  }, [searchData]);
 
   return [loading, error, weatherData];
 };

@@ -8,18 +8,17 @@ type Props = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputValue: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  cityInput: React.RefObject<HTMLInputElement>;
 };
 
-const Main: React.FC<Props> = ({ weatherData, onSubmit, onChange, inputValue, setInputValue }) => {
-  console.log(weatherData);
+const Main: React.FC<Props> = ({ weatherData, onSubmit, onChange, inputValue, cityInput }) => {
   return (
     <Container>
       <Search
         onSubmit={onSubmit}
         onChange={onChange}
         inputValue={inputValue}
-        setInputValue={setInputValue}
+        cityInput={cityInput}
       />
       <WeatherInfo weatherData={weatherData} />
     </Container>

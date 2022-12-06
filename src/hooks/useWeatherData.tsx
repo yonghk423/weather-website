@@ -4,11 +4,10 @@ import { IweatherData } from "../App";
 
 type ReturnTypes = [boolean, undefined, IweatherData | undefined];
 
-const useWeatherData = ({ searchData }: any): ReturnTypes => {
+const useWeatherData = (searchData: string): ReturnTypes => {
   const [weatherData, setWeatherData] = useState<IweatherData>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
-  console.log(searchData);
 
   useEffect(() => {
     setLoading(false);

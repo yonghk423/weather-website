@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const weatherApi = async (city: string) => {
-  console.log(city);
   try {
     const response = await axios
       .get(

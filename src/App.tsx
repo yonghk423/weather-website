@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import useWeatherData from "./hooks/useWeatherData";
 import Main from "./page/Main";
@@ -15,39 +15,32 @@ export interface IweatherData {
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState("");
-  const [loading, error, weatherData] = useWeatherData({ searchData });
-  console.log(inputValue);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  const [loading, error, weatherData] = useWeatherData(searchData);
+  const cityInput = useRef<HTMLInputElement>(null);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e);
     setSearchData(inputValue);
     setInputValue("");
+    if (cityInput.current) {
+      cityInput.current.focus();
+    }
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <Layout>
-      {/* <form onSubmit={onSubmit}>
-        <input
-          type='search'
-          name='search'
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          required
-        ></input>
-        <button type='submit' placeholder='search city'>
-          search
-        </button>
-      </form> */}
       <Main
         weatherData={weatherData}
         onSubmit={onSubmit}
         onChange={onChange}
         inputValue={inputValue}
-        setInputValue={setInputValue}
+        cityInput={cityInput}
       />
     </Layout>
   );

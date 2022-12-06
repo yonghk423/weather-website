@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const GetApi = async (city: string) => {
+const getApi = async (city: string) => {
   try {
     const response = await axios
       .get(
@@ -20,4 +20,4 @@ const GetApi = async (city: string) => {
   }
 };
 
-export default GetApi;
+export default getApi;

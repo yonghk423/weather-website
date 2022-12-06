@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import getApi from "../Api/getApi";
+import getApi from "../api/getApi";
 import { IweatherData } from "../App";
 
 type ReturnTypes = [boolean, undefined, IweatherData | undefined];

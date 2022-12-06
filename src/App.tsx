@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import UseWeatherData from "./Hooks/UseWeatherData";
+import useWeatherData from "./hooks/useWeatherData";
 import Main from "./page/Main";
 
 export interface IweatherData {
@@ -15,7 +15,7 @@ export interface IweatherData {
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState("");
-  const [loading, error, weatherData] = UseWeatherData(searchData);
+  const [loading, error, weatherData] = useWeatherData(searchData);
   const cityInput = useRef<HTMLInputElement>(null);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

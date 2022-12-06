@@ -4,7 +4,7 @@ import { IweatherData } from "../App";
 
 type ReturnTypes = [boolean, undefined, IweatherData | undefined];
 
-const UseWeatherData = (searchData: string): ReturnTypes => {
+const useWeatherData = (searchData: string): ReturnTypes => {
   const [weatherData, setWeatherData] = useState<IweatherData>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -22,4 +22,4 @@ const UseWeatherData = (searchData: string): ReturnTypes => {
   return [loading, error, weatherData];
 };
 
-export default UseWeatherData;
+export default useWeatherData;

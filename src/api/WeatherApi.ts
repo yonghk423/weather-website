@@ -8,7 +8,6 @@ const WeatherApi = async (city: string) => {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       )
       .then((data) => data?.data);
-    console.log(response);
     const { weather } = response;
     const { main, icon } = weather[0];
     const {

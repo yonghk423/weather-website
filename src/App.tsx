@@ -2,19 +2,29 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import WeatherApi from "./api/WeatherApi";
 import Main from "./page/Main";
-function App() {
-  const [weatherData, setWeatherData] = useState();
 
+export interface IweatherData {
+  main: string;
+  icon: string;
+  temp: string;
+  temp_min: string;
+  temp_max: string;
+  name: string;
+}
+
+function App() {
+  const [weatherData, setWeatherData] = useState<IweatherData>();
+  console.log(weatherData);
   useEffect(() => {
     const WeatherApiData = async () => {
       const data = await WeatherApi("seoul");
-      console.log(data);
+      setWeatherData(data);
     };
     WeatherApiData();
   }, []);
   return (
     <Layout>
-      <Main />
+      <Main weatherData={weatherData} />
     </Layout>
   );
 }

@@ -1,8 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { IweatherData } from "../App";
+import Search from "../components/Search";
+import WeatherInfo from "../components/WeatherInfo";
+type Props = {
+  weatherData: IweatherData | undefined;
+};
 
-const Main = () => {
-  return <Container></Container>;
+const Main: React.FC<Props> = ({ weatherData }) => {
+  console.log(weatherData);
+  return (
+    <Container>
+      <Search />
+      <WeatherInfo weatherData={weatherData} />
+    </Container>
+  );
 };
 
 export default Main;

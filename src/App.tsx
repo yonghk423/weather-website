@@ -19,11 +19,14 @@ function App() {
   console.log(inputValue);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
-
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(e);
     setSearchData(inputValue);
+    setInputValue("");
   };
   return (
     <Layout>
@@ -42,6 +45,7 @@ function App() {
       <Main
         weatherData={weatherData}
         onSubmit={onSubmit}
+        onChange={onChange}
         inputValue={inputValue}
         setInputValue={setInputValue}
       />

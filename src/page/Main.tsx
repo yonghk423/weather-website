@@ -6,15 +6,21 @@ import WeatherInfo from "../components/WeatherInfo";
 type Props = {
   weatherData: IweatherData | undefined;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Main: React.FC<Props> = ({ weatherData, onSubmit, inputValue, setInputValue }) => {
+const Main: React.FC<Props> = ({ weatherData, onSubmit, onChange, inputValue, setInputValue }) => {
   console.log(weatherData);
   return (
     <Container>
-      <Search onSubmit={onSubmit} inputValue={inputValue} setInputValue={setInputValue} />
+      <Search
+        onSubmit={onSubmit}
+        onChange={onChange}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
       <WeatherInfo weatherData={weatherData} />
     </Container>
   );

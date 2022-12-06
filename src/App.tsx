@@ -8,6 +8,7 @@ function App() {
   useEffect(() => {
     const WeatherApiData = async () => {
       const data = await WeatherApi("seoul");
+      console.log(data);
     };
     WeatherApiData();
   }, []);

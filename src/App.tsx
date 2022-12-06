@@ -18,9 +18,13 @@ function App() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(e);
+  };
   return (
     <Layout>
-      <Main weatherData={weatherData} />
+      <Main weatherData={weatherData} onSubmit={onSubmit} />
     </Layout>
   );
 }

@@ -5,13 +5,14 @@ import Search from "../components/Search";
 import WeatherInfo from "../components/WeatherInfo";
 type Props = {
   weatherData: IweatherData | undefined;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-const Main: React.FC<Props> = ({ weatherData }) => {
+const Main: React.FC<Props> = ({ weatherData, onSubmit }) => {
   console.log(weatherData);
   return (
     <Container>
-      <Search />
+      <Search onSubmit={onSubmit} />
       <WeatherInfo weatherData={weatherData} />
     </Container>
   );

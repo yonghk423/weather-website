@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import weatherApi from "../api/weatherApi";
+import GetApi from "../api/GetApi";
 import { IweatherData } from "../App";
 
 type ReturnTypes = [boolean, undefined, IweatherData | undefined];
@@ -13,7 +13,7 @@ const useWeatherData = (searchData: string): ReturnTypes => {
     setLoading(false);
     setError(undefined);
     const WeatherApiData = async () => {
-      const data = await weatherApi(`${searchData !== "" ? searchData : "seoul"}`);
+      const data = await GetApi(`${searchData !== "" ? searchData : "seoul"}`);
       setWeatherData(data);
     };
     WeatherApiData();

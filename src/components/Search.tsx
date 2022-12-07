@@ -6,7 +6,7 @@ import InputBase from "@mui/material/InputBase";
 type Props = {
   handleSearchWeatherSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleSearchWeather: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputSearchValue: string;
+  inputSearchValue?: string;
 };
 const Search: React.FC<Props> = ({
   handleSearchWeatherSubmit,

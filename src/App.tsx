@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Main from "./page/Main";
+import Main from "./page/WeatherPage";
 
 function App() {
   return (

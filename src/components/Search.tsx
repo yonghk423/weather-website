@@ -22,7 +22,7 @@ const Search: React.FC<Props> = ({ onSubmit, onChange, inputValue }) => {
           onChange={onChange}
           required
           autoFocus
-        ></TextField>
+        />
         <IconButton aria-label='delete' type='submit'>
           <DeleteIcon />
         </IconButton>

@@ -42,7 +42,6 @@ export default Search;
 const Container = styled.div`
   display: grid;
   justify-content: center;
-  /* border: 1px solid black; */
   position: relative;
   top: 50px;
 `;

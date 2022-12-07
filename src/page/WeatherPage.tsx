@@ -39,6 +39,8 @@ export default Main;
 const Container = styled.div`
   margin: 30px;
   background-color: rgba(225, 225, 225, 0.2);
+  background-color: #e53935;
   border-radius: 15px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 11px 11px 4px 0px rgba(0, 0, 0, 0.21);
+  height: 600px;
 `;

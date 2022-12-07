@@ -4,7 +4,7 @@ const GetApi = async (city: string) => {
   try {
     const response = await axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       )
       .then((data) => data?.data);
     const { weather } = response;

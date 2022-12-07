@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { IweatherData } from "../App";
 import Search from "../components/Search";
 import WeatherInfo from "../components/WeatherInfo";
-import useWeatherData from "../hooks/useWeatherData";
 
 type Props = {
   weatherData: IweatherData | undefined;

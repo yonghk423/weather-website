@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import useWeatherData from "./hooks/useWeatherData";
 import Main from "./page/Main";
@@ -18,21 +18,32 @@ function App() {
   const [loading, error, weatherData] = useWeatherData(searchData);
   const cityInput = useRef<HTMLInputElement>(null);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setInputValue(e.target.value);
+  // };
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-  };
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSearchData(inputValue);
-    setInputValue("");
-    if (cityInput.current) {
-      cityInput.current.focus();
-    }
-  };
+  }, []);
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>{error}</p>;
-
+  // const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setSearchData(inputValue);
+  //   setInputValue("");
+  //   if (cityInput.current) {
+  //     cityInput.current.focus();
+  //   }
+  // };
+  const onSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setSearchData(inputValue);
+      setInputValue("");
+      if (cityInput.current) {
+        cityInput.current.focus();
+      }
+    },
+    [inputValue]
+  );
   return (
     <Layout>
       <Main

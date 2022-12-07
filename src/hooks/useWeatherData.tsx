@@ -21,7 +21,7 @@ const useWeatherData = (searchData: string): ReturnTypes => {
         setWeatherData(data);
       } catch (err) {
         console.log("err", err);
-        setError("도시 이름을 다시 한번 확인 해주세요:)");
+        setError("Invalid city name. please enter again:)");
       } finally {
         setLoading(false);
       }

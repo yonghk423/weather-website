@@ -18,15 +18,14 @@ const Search: React.FC<Props> = ({
       <form onSubmit={handleSearchWeatherSubmit}>
         <InputBase
           sx={{ ml: 1, flex: 1 }}
-          placeholder='search city...'
-          inputProps={{ "aria-label": "search city..." }}
+          placeholder='weather search by city...'
           value={inputSearchValue}
           onChange={handleSearchWeather}
           required
           autoFocus
           style={{
             boxShadow: "0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06)",
-            width: "200px",
+            width: "300px",
             height: "40px",
             fontSize: "20px",
           }}

@@ -1,30 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
+import SearchIcon from "@mui/icons-material/Search";
 
 type Props = {
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputValue: string;
+  handleSearchWeatherSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleSearchWeather: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputSearchValue: string;
 };
-const Search: React.FC<Props> = ({ onSubmit, onChange, inputValue }) => {
+const Search: React.FC<Props> = ({
+  handleSearchWeatherSubmit,
+  handleSearchWeather,
+  inputSearchValue,
+}) => {
   return (
     <Container>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSearchWeatherSubmit}>
         <TextField
           id='standard-basic'
           label='search city...'
           variant='standard'
-          value={inputValue}
-          onChange={onChange}
+          value={inputSearchValue}
+          onChange={handleSearchWeather}
           required
           autoFocus
         />
         <IconButton aria-label='delete' type='submit'>
-          <DeleteIcon />
+          <SearchIcon />
         </IconButton>
       </form>
     </Container>

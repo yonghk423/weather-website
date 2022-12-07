@@ -76,8 +76,6 @@ const GetApi = async (city: string): Promise<IweatherData> => {
     return {
       main,
       icon,
-      // 여기서 굳이 안해도되는데, 기본 구조 때문에 여기다가 넣은 겅미
-      // 만약 물어보면 대응할 생각하시면 좋을듯합니다.!!
       temp: temp.toString(),
       temp_min: temp_min.toString(),
       temp_max: temp_max.toString(),

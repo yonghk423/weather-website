@@ -5,26 +5,30 @@ import WeatherInfo from "../components/WeatherInfo";
 import useWeatherData from "../hooks/useWeatherData";
 
 const Main = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputSearchValue, setInputSearchValue] = useState("");
   const [searchData, setSearchData] = useState("");
   const { loading, error, weatherData } = useWeatherData(searchData);
 
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const handleSearchWeather = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputSearchValue(e.target.value);
   }, []);
 
-  const onSubmit = useCallback(
+  const handleSearchWeatherSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setSearchData(inputValue);
-      setInputValue("");
+      setSearchData(inputSearchValue);
+      setInputSearchValue("");
     },
-    [inputValue]
+    [inputSearchValue]
   );
 
   return (
     <Container>
-      <Search onSubmit={onSubmit} onChange={onChange} inputValue={inputValue} />
+      <Search
+        handleSearchWeatherSubmit={handleSearchWeatherSubmit}
+        handleSearchWeather={handleSearchWeather}
+        inputSearchValue={inputSearchValue}
+      />
       <WeatherInfo weatherData={weatherData} loading={loading} error={error} />
     </Container>
   );

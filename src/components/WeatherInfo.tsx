@@ -1,10 +1,16 @@
 import React from "react";
 import { IweatherData } from "../App";
+import useWeatherData from "../hooks/useWeatherData";
+
 type Props = {
   weatherData: IweatherData | undefined;
 };
 
 const WeatherInfo: React.FC<Props> = ({ weatherData }) => {
+  const [loading, error] = useWeatherData("");
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <ul>
       <li>{weatherData?.name}</li>

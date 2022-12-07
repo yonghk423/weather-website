@@ -2,19 +2,24 @@ import { useState, useEffect } from "react";
 import GetApi from "../api/GetApi";
 import { IweatherData } from "../App";
 
-type ReturnTypes = [boolean, undefined, IweatherData | undefined];
+type ReturnTypes = [boolean, string, IweatherData | undefined];
 
 const useWeatherData = (searchData: string): ReturnTypes => {
   const [weatherData, setWeatherData] = useState<IweatherData>();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    setLoading(false);
-    setError(undefined);
+    setLoading(true);
+    setError("");
     const WeatherApiData = async () => {
-      const data = await GetApi(`${searchData !== "" ? searchData : "seoul"}`);
-      setWeatherData(data);
+      try {
+        const data = await GetApi(`${searchData !== "" ? searchData : "seoul"}`);
+        setWeatherData(data);
+        setLoading(false);
+      } catch (err) {
+        setError("에러가 발생");
+      }
     };
     WeatherApiData();
   }, [searchData]);

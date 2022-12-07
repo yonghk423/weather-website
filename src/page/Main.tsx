@@ -1,27 +1,31 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
-import { IweatherData } from "../App";
 import Search from "../components/Search";
 import WeatherInfo from "../components/WeatherInfo";
+import useWeatherData from "../hooks/useWeatherData";
 
-type Props = {
-  weatherData: IweatherData | undefined;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputValue: string;
-  cityInput: React.RefObject<HTMLInputElement>;
-};
+const Main = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [searchData, setSearchData] = useState("");
+  const { loading, error, weatherData } = useWeatherData(searchData);
 
-const Main: React.FC<Props> = ({ weatherData, onSubmit, onChange, inputValue, cityInput }) => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  }, []);
+
+  const onSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setSearchData(inputValue);
+      setInputValue("");
+    },
+    [inputValue]
+  );
+
   return (
     <Container>
-      <Search
-        onSubmit={onSubmit}
-        onChange={onChange}
-        inputValue={inputValue}
-        cityInput={cityInput}
-      />
-      <WeatherInfo weatherData={weatherData} />
+      <Search onSubmit={onSubmit} onChange={onChange} inputValue={inputValue} />
+      <WeatherInfo weatherData={weatherData} loading={loading} error={error} />
     </Container>
   );
 };

@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import GetApi from "../api/GetApi";
-import { IweatherData } from "../App";
+import { IweatherData } from "../api/GetApi";
 
-// type ReturnTypes = { boolean, string, IweatherData | undefined };
 type ReturnTypes = {
   loading: boolean;
   error: string;
-  weatherData: IweatherData | undefined;
+  weatherData?: IweatherData;
 };
 const useWeatherData = (searchData: string): ReturnTypes => {
   const [weatherData, setWeatherData] = useState<IweatherData>();
@@ -20,9 +19,11 @@ const useWeatherData = (searchData: string): ReturnTypes => {
       try {
         const data = await GetApi(`${searchData !== "" ? searchData : "seoul"}`);
         setWeatherData(data);
-        setLoading(false);
       } catch (err) {
-        setError("에러가 발생");
+        console.log("err", err);
+        setError("도시 이름을 다시 한번 확인 해주세요:)");
+      } finally {
+        setLoading(false);
       }
     };
     WeatherApiData();

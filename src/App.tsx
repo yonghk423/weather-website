@@ -30,8 +30,8 @@ function App() {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>{error}</p>;
 
   return (
     <Layout>

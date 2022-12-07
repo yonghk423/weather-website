@@ -7,7 +7,7 @@ type Props = {
 };
 
 const WeatherInfo: React.FC<Props> = ({ weatherData }) => {
-  const [loading, error] = useWeatherData("");
+  const { loading, error } = useWeatherData("");
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 

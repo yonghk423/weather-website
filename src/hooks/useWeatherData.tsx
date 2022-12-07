@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 import GetApi from "../api/GetApi";
 import { IweatherData } from "../App";
 
-type ReturnTypes = [boolean, string, IweatherData | undefined];
-
+// type ReturnTypes = { boolean, string, IweatherData | undefined };
+type ReturnTypes = {
+  loading: boolean;
+  error: string;
+  weatherData: IweatherData | undefined;
+};
 const useWeatherData = (searchData: string): ReturnTypes => {
   const [weatherData, setWeatherData] = useState<IweatherData>();
   const [loading, setLoading] = useState(false);
@@ -24,7 +28,7 @@ const useWeatherData = (searchData: string): ReturnTypes => {
     WeatherApiData();
   }, [searchData]);
 
-  return [loading, error, weatherData];
+  return { loading, error, weatherData };
 };
 
 export default useWeatherData;

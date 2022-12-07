@@ -11,7 +11,7 @@ type Props = {
 const WeatherInfo: React.FC<Props> = ({ loading, error, weatherData }) => {
   if (loading) return <Loading>Loading...</Loading>;
   if (error) return <Error>{error}</Error>;
-  if (!weatherData) return <div>데이터가 존재하지 않습니다.😭 </div>;
+  if (!weatherData) return <div>The data does not exist.😭 </div>;
   const { main, name, icon, temp, temp_max, temp_min } = weatherData;
 
   return (
